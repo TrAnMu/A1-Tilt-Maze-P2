@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 	private Rigidbody rb;
+	public float thrust;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,10 @@ public class Ball : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.R)) {
 			UnityEngine.SceneManagement.SceneManager.LoadScene (0);
+		}
+
+		if (Input.GetButtonDown ("Jump")) {
+			rb.AddForce (new Vector3 (0, thrust, 0));
 		}
 	}
 
