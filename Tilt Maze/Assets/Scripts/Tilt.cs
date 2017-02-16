@@ -5,10 +5,12 @@ using UnityEngine;
 public class Tilt : MonoBehaviour {
 
 	public Vector3 currentRot;
+	public GameObject wall;
 
 	// Use this for initialization
 	void Start () {
-		
+		// GameObject wall = (GameObject)Instantiate (Resources.Load ("Prefabs/RotWaller"));
+		wall.transform.position = new Vector3 (0.3f, 5.5f, 0f);
 	}
 	
 	// Update is called once per frame
