@@ -5,7 +5,6 @@ using UnityEngine;
 public class WallRotation : MonoBehaviour {
 	private bool turning = false;
 	private bool clockwise;
-	private float speed = 90.0f;
 	private float target;
 
 	// Use this for initialization
@@ -29,33 +28,27 @@ public class WallRotation : MonoBehaviour {
 
 				if (Random.Range (0, 2) == 0) {
 					target = (transform.eulerAngles.y + 90.0f) % 360.0f;
-					print (transform.eulerAngles.y.ToString() + " to " + target.ToString ());
 
 					clockwise = true;
 				} else {
 					target = transform.eulerAngles.y - 90.0f;
 
+					if (target < 0.0f) {
+						target += 360.0f;
+					}
+
 					clockwise = false;
 				}
 			}
 		} else {
-			// TODO move toward the target angle.
+			if (Mathf.Abs(transform.eulerAngles.y - target) > 1.0) {
+				float angle = Mathf.MoveTowardsAngle (transform.eulerAngles.y, target, 90.0f * Time.deltaTime);
+				transform.eulerAngles = new Vector3(0, angle, 0);
+			} else {
+				transform.eulerAngles = new Vector3 (0, target, 0);
+				turning = false;
+			}
 
-//			StartCoroutine(Turn (clockwise));
 		}
 	}
-
-//	private IEnumerator Turn (bool clockwise) {
-//		float newAngle = currEuler.y + 90.0f;
-//
-//		print (currEuler.y.ToString() + " to " + newAngle.ToString());
-//
-//		while (currEuler.y != newAngle) {
-//			currEuler.y = Mathf.MoveTowardsAngle (currEuler.y, newAngle, speed * Time.deltaTime);
-//			transform.eulerAngles = currEuler;
-//			yield return null;
-//		}
-//
-//		turning = false;
-//	}
 }
