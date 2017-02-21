@@ -39,11 +39,9 @@ public class WallRotation : MonoBehaviour {
 		} else {
 			if (Mathf.Abs(transform.eulerAngles.y - target) > 1.0) {
 				float angle = Mathf.MoveTowardsAngle (transform.eulerAngles.y, target, 90.0f * Time.deltaTime);
-				transform.Rotate (Vector3.up, angle);
-				//transform.eulerAngles = new Vector3(0.0f, angle, 0.0f);
+				transform.eulerAngles = new Vector3(0.0f, angle, 0.0f);
 			} else {
-				transform.Rotate (Vector3.up, target);
-				//transform.eulerAngles = new Vector3 (0.0f, target, 0.0f);
+				transform.eulerAngles = new Vector3 (0.0f, target, 0.0f);
 				turning = false;
 			}
 
