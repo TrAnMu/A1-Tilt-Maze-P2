@@ -21,31 +21,29 @@ public class WallRotation : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () { //Still not PERFECT but damn near close.
 		if (!turning) {
 			if (Random.Range (0.0f, 1.0f) < Time.deltaTime / 10.0f) {
 				turning = true;
 
-				if (Random.Range (0, 2) == 0) {
+				if (Random.Range (0, 2) == 0) { //Clockwise
 					target = (transform.eulerAngles.y + 90.0f) % 360.0f;
-
-					clockwise = true;
-				} else {
+				} else { //Counterclockwise
 					target = transform.eulerAngles.y - 90.0f;
 
 					if (target < 0.0f) {
 						target += 360.0f;
 					}
-
-					clockwise = false;
 				}
 			}
 		} else {
 			if (Mathf.Abs(transform.eulerAngles.y - target) > 1.0) {
 				float angle = Mathf.MoveTowardsAngle (transform.eulerAngles.y, target, 90.0f * Time.deltaTime);
-				transform.eulerAngles = new Vector3(0, angle, 0);
+				transform.Rotate (Vector3.up, angle);
+				//transform.eulerAngles = new Vector3(0.0f, angle, 0.0f);
 			} else {
-				transform.eulerAngles = new Vector3 (0, target, 0);
+				transform.Rotate (Vector3.up, target);
+				//transform.eulerAngles = new Vector3 (0.0f, target, 0.0f);
 				turning = false;
 			}
 
