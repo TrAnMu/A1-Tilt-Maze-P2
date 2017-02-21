@@ -15,7 +15,7 @@ B. Additional Elements
 
 C. Known Issues
 - The tilt limit occasionally allows the x and z to exceed the limit, causing controls to lock up. I can usually wrestle back control with some fiddling.
-- A consequence of the correct rotation about y is that the walls can begin to phase through the platform slightly after some platform movement. The game is still perfectly playable and I prefer this concession to get the walls to rotate properly. (If you don't rotate the map, you can see that the walls stay fully above the surface.)
+- A consequence of the correct rotation about y is that the walls can begin to phase through the platform slightly after some platform movement. The game is still perfectly playable and I prefer this concession to get the walls to rotate on the y axis properly. (If you don't rotate the map, you can see that the walls stay fully above the surface.)
 
 D. External Resources
 - None.
